@@ -1,4 +1,4 @@
-const pool = require('../db');
+const pool = require('../../index');
 const bcrypt = require('bcrypt');
 
 async function hashPassword(password){
