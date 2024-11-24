@@ -16,11 +16,11 @@ async function registerUser(userDetails){
     const { username, email, password } = userDetails;
     if (username.length > 30) throw new Error(`Username length cannot be more than 30`);
     if (password.length > 20) throw new Error(`Password length cannot be more than 20`);
-    const emailExists = await pool.query(`SELECT * FROM a_user WHERE email = $1`, [email]);
+    const emailExists = await pool.query(`SELECT * FROM account WHERE email = $1`, [email]);
     if (emailExists.rows.length !== 0) throw new Error(`Email is unavailable`);
     const hashedPassword = await hashPassword(password);
     const result = await pool.query(
-        'INSERT INTO a_user (username, email, password) VALUES ($1, $2, $3) RETURNING id',
+        'INSERT INTO account (username, email, password) VALUES ($1, $2, $3) RETURNING id',
         [username, email, hashedPassword]
     );
     
@@ -31,7 +31,7 @@ async function loginUser(userDetails){
     console.log(userDetails);
     const { email, password } = userDetails;
     const result = await pool.query(
-        'SELECT * FROM a_user WHERE email = $1',
+        'SELECT * FROM account WHERE email = $1',
         [email]
     );
     if (result.rows.length == 0) {
@@ -58,7 +58,7 @@ async function loginUser(userDetails){
 async function editProfile(details){
     const {userId, username, email} = details;
 
-    let queryText = `UPDATE a_user SET `
+    let queryText = `UPDATE account SET `
     let queryParams = [];
 
     if(username){
@@ -79,7 +79,7 @@ async function editProfile(details){
         queryParams
     )
     const result = await pool.query(
-        `SELECT * FROM a_user WHERE id = $1`,
+        `SELECT * FROM account WHERE id = $1`,
         [userId]
     )
     console.log(result.rows[0]);
