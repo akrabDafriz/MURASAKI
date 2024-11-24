@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Latar Belakang -->
+    <item>
+        <drawable android:drawable="@drawable/agility_bar_bg" />
+    </item>
+
+    <!-- Progress -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <drawable android:drawable="@drawable/agility_bar_progress" />
+        </clip>
+    </item>
+</layer-list>
