@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePage"
+    android:background="@drawable/home_bg">
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- FrameLayout untuk menumpuk lingkaran dan progress bar -->
+            <FrameLayout
+                android:id="@+id/level_circle_container"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp">
+
+                <!-- Progress Bar (di bawah lingkaran) -->
+                <ProgressBar
+                    android:id="@+id/level_progress_bar"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:background="@drawable/level_bar_combined"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:progress="70"
+                    android:max="100"/>
+
+                <!-- Lingkaran Level -->
+                <RelativeLayout
+                    android:id="@+id/level_circle_layout"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp">
+
+                    <!-- Lingkaran sebagai background -->
+                    <View
+                        android:id="@+id/ellipse_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ellipse_2" />
+
+                    <!-- TextView untuk angka Level -->
+                    <TextView
+                        android:id="@+id/tv_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textSize="65dp"
+                        android:textColor="@color/orange"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:gravity="center"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </FrameLayout>
+
+            <!-- Username di sebelah kanan lingkaran -->
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="35dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/jaroregularvariablefontopsz"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="145dp"
+                android:layout_marginTop="140dp"
+                android:gravity="center" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/avatar_space"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/level_progress_bar"
+            android:layout_marginTop="16dp"
+            android:background="#D3D3D3" />
+
+        <!-- Card untuk Bar Status -->
+        <LinearLayout
+            android:id="@+id/status_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/card_border"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Bar Strength -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_strength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Strength"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_strength"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:progressDrawable="@drawable/strength_bar_combined"
+                        android:progress="50"
+                        android:max="100" />
+                </RelativeLayout>
+
+                <!-- Bar Agility -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_agility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Agility"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_agility"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:progressDrawable="@drawable/agility_bar_combined"
+                        android:progress="70"
+                        android:max="100" />
+                </RelativeLayout>
+
+                <!-- Bar Vitality -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_vitality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vitality"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_vitality"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:progressDrawable="@drawable/vitality_bar_combined"
+                        android:progress="80"
+                        android:max="100" />
+                </RelativeLayout>
+
+                <!-- Bar Flexibility -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_flexibility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Flexibility"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_flexibility"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:progressDrawable="@drawable/flexibility_bar_combined"
+                        android:progress="60"
+                        android:max="100" />
+                </RelativeLayout>
+
+                <!-- Bar Stability -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_stability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stability"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_stability"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:progressDrawable="@drawable/stability_bar_combined"
+                        android:progress="90"
+                        android:max="100" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="100dp"
+            android:padding="8dp"
+            android:gravity="center"
+            android:background="@drawable/navbar_bg">
+
+            <!-- Button Input Progress -->
+            <ImageButton
+                android:id="@+id/btn_input_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_input_btn"
+                android:textColor="#FFFFFF"/>
+
+            <!-- Button Exercise List -->
+            <ImageButton
+                android:id="@+id/btn_exercise_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_list_btn"
+                android:textColor="#FFFFFF"/>
+
+            <!-- Button Home (centered) -->
+            <ImageButton
+                android:id="@+id/btn_home"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_home_btn"
+                android:textColor="#FFFFFF"/>
+
+            <!-- Button Stat Details -->
+            <ImageButton
+                android:id="@+id/btn_stat_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_detail_btn"
+                android:textColor="#FFFFFF"/>
+
+            <!-- Button Settings -->
+            <ImageButton
+                android:id="@+id/btn_settings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_settings_btn"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
