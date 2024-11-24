@@ -5,3 +5,11 @@ CREATE TABLE account(
     password text NOT NULL
 );
 
+CREATE TABLE stats(
+    user_id uuid NOT NULL,
+    strength int,
+    agility int,
+    vitality int,
+    flexibility int,
+    stability int
+)
