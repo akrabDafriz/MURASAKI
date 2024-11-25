@@ -45,6 +45,7 @@
             android:layout_below="@id/login_text">
 
             <EditText
+                android:id="@+id/edit_username"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/button_shape"
@@ -52,8 +53,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/imprimaregular"
                 android:drawableLeft="@drawable/baseline_person_24"
-                android:paddingLeft="20dp"
-                android:id="@+id/edit_username">
+                android:paddingLeft="20dp">
             </EditText>
 
             <EditText
@@ -70,9 +70,9 @@
             </EditText>
         </LinearLayout>
         <Button
+            android:id="@+id/login_btn"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:id="@+id/login_btn"
             android:layout_below="@+id/credentials"
             android:layout_centerHorizontal="true"
             android:text="LOGIN"
@@ -81,6 +81,7 @@
             >
         </Button>
         <TextView
+            android:id="@+id/register_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/login_btn"
@@ -90,7 +91,6 @@
             android:textColor="@color/white"
             android:fontFamily="@font/imprimaregular"
             android:textSize="15dp">
-
         </TextView>
     </RelativeLayout>
 </RelativeLayout>

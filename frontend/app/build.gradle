@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.murasaki.frontend'
+    namespace 'com.arcfit.murasaki'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.murasaki.frontend"
+        applicationId 'com.arcfit.murasaki'
         minSdk 24
         targetSdk 34
         versionCode 1
