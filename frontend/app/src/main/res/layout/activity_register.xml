@@ -61,12 +61,12 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_shape"
-                android:hint="  |  Password"
+                android:hint="  |  Email"
                 android:textColor="@color/black"
                 android:fontFamily="@font/imprimaregular"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:paddingLeft="20dp"
-                android:id="@+id/edit_password">
+                android:id="@+id/edit_email">
             </EditText>
 
             <EditText
@@ -74,12 +74,12 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_shape"
-                android:hint="  |  Confirm password"
+                android:hint="  |  Password"
                 android:textColor="@color/black"
                 android:fontFamily="@font/imprimaregular"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:paddingLeft="20dp"
-                android:id="@+id/edit_confirm_password">
+                android:id="@+id/edit_password">
             </EditText>
         </LinearLayout>
         <Button

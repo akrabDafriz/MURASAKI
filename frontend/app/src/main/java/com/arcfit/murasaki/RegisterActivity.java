@@ -21,40 +21,33 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
     private BaseApiService mApiService;
     private Context mContext;
-    private EditText username, email, password, confirmPassword;
+    private EditText username, email, password;
     private Button registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        super.setContentView(R.layout.activity_register);
 
         mContext = this;
         mApiService = UtilsApi.getApiService();
         username = findViewById(R.id.edit_username);
-        //email = findViewById(R.id.edit_email);
+        email = findViewById(R.id.edit_email);
         password = findViewById(R.id.edit_password);
-        confirmPassword = findViewById(R.id.edit_confirm_password);
-        //registerBtn = findViewById(R.id.register_btn);
+        registerBtn = findViewById(R.id.register_btn);
 
         registerBtn.setOnClickListener(v -> {
-            //handleRegister();
+            handleRegister();
         });
     }
 
-    /*protected void handleRegister() {
+    protected void handleRegister() {
         String usernameS = username.getText().toString();
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
-        String confirmPasswordS = confirmPassword.getText().toString();
 
-        if (usernameS.isEmpty() || emailS.isEmpty() || passwordS.isEmpty() || confirmPasswordS.isEmpty()) {
+        if (usernameS.isEmpty() || emailS.isEmpty() || passwordS.isEmpty() ) {
             Toast.makeText(mContext, "Field cannot be empty", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!passwordS.equals(confirmPasswordS)) {
-            Toast.makeText(mContext, "Passwords do not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -85,5 +78,5 @@ public class RegisterActivity extends AppCompatActivity {
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
-    }*/
+    }
 }
