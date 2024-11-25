@@ -21,8 +21,13 @@ import retrofit2.http.PUT;
 
 public interface BaseApiService {
 
+    @FormUrlEncoded
     @POST("/register")
-    Call<Integer> registerUser(@Body User user);
+    Call<BaseResponse<Integer>> registerUser(
+        @Field("username") String username,
+        @Field("email") String email,
+        @Field("password") String password
+    );
     @FormUrlEncoded
     @POST("/login")
     Call<BaseResponse<User>> loginUser(
