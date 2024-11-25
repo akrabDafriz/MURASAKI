@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        super.setContentView(R.layout.activity_login); // Explicitly call the method from AppCompatActivity
         //getSupportActionBar().hide();
 
         mContext = this;
