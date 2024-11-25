@@ -2,10 +2,224 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/progress_input"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProgressInputActivity"
     android:background="@drawable/home_bg">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:id="@+id/list1"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/list_progress_input_bg1"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <TextView
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:text="Deadline: DD/MM/YYYY"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@drawable/deadline_bg"
+            android:fontFamily="@font/jaroregularvariablefontopsz"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="20dp"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/list2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp">
+
+            <!-- Nama Olahraga -->
+            <TextView
+                android:id="@+id/tvWorkoutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Push-up"
+                android:fontFamily="@font/jejuhallasanregular"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#501105" />
+
+            <!-- Spacer untuk jarak antara nama olahraga dan jumlah set -->
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <!-- Jumlah Set -->
+            <TextView
+                android:id="@+id/tvWorkoutSets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(3 sets)"
+                android:fontFamily="@font/jejuhallasanregular"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#501105" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/list2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp">
+
+            <!-- Nama Olahraga -->
+            <TextView
+                android:id="@+id/tvWorkoutName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Push-up"
+                android:fontFamily="@font/jejuhallasanregular"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#501105" />
+
+            <!-- Spacer untuk jarak antara nama olahraga dan jumlah set -->
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <!-- Jumlah Set -->
+            <TextView
+                android:id="@+id/tvWorkoutSets2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(3 sets)"
+                android:fontFamily="@font/jejuhallasanregular"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#501105" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- Dropdown Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/input_progress_dropdown_bg"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- First Dropdown -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Workout Type"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"
+                android:textColor="#4F1787"
+                android:shadowColor="#80000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:fontFamily="@font/jaroregularvariablefontopsz"/>
+
+            <Spinner
+                android:id="@+id/workoutTypeSpinner"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/dropdown_bg"
+                android:padding="8dp"
+                android:layout_alignParentEnd="true"/>
+        </LinearLayout>
+
+        <!-- Second Dropdown -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set(s)"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"
+                android:textColor="#4F1787"
+                android:shadowColor="#80000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:fontFamily="@font/jaroregularvariablefontopsz"/>
+
+            <Spinner
+                android:id="@+id/setSpinner"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/dropdown_bg"
+                android:padding="8dp"
+                android:layout_marginLeft="55dp"
+                android:layout_alignParentEnd="true"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/list_progress_input_bg2"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stats"
+            android:textSize="25sp"
+            android:textColor="#000000"
+            android:fontFamily="@font/jaroregularvariablefontopsz"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:hint="Enter your notes here"
+            android:background="@drawable/stability_bar_bg"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:backgroundTint="#B95EFF"
+        android:text="Update"
+        android:textSize="25dp"
+        android:fontFamily="@font/jaroregularvariablefontopsz"
+        />
+
+
+</LinearLayout>
 </RelativeLayout>

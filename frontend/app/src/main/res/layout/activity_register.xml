@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/button_shape"
-                android:hint="  |  Username"
+                android:hint="  |  Email"
                 android:textColor="@color/black"
                 android:fontFamily="@font/imprimaregular"
                 android:drawableLeft="@drawable/baseline_person_24"
