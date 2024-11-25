@@ -1,7 +1,7 @@
 package com.arcfit.murasaki.model;
 
 public class Stats {
-    public int id;
+    public String id;
     public int Strength;
     public int Agility;
     public int Vitality;

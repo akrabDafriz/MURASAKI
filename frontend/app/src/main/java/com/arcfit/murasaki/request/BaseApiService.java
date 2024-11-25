@@ -23,7 +23,7 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("/register")
-    Call<BaseResponse<Integer>> registerUser(
+    Call<BaseResponse<String>> registerUser(
         @Field("username") String username,
         @Field("email") String email,
         @Field("password") String password
