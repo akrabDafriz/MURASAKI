@@ -1,6 +1,7 @@
 package com.arcfit.murasaki.model;
 
-public class Stats extends UserID{
+public class Stats {
+    public int id;
     public int Strength;
     public int Agility;
     public int Vitality;

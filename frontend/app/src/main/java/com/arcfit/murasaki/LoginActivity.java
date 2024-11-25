@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     public static User loggedAccount = null;
     private BaseApiService mApiService;
     private Context mContext;
-    private EditText username, password;
+    private EditText email, password;
     private TextView registerNow = null;
     private Button login_btn = null;
     //private androidx.appcompat.widget.AppCompatButton registerbtn = null;
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mContext = this;
         mApiService = UtilsApi.getApiService();
-        username = findViewById(R.id.edit_username);
+        email = findViewById(R.id.edit_email);
         password = findViewById(R.id.edit_password);
         registerNow = findViewById(R.id.register_txt);
         login_btn = findViewById(R.id.login_btn);
@@ -51,33 +51,37 @@ public class LoginActivity extends AppCompatActivity {
     }
     protected void handleLogin () {
         // handling empty field
-        String usernameS = username.getText().toString();
+        String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
 
-        if (usernameS.isEmpty() || passwordS.isEmpty()) {
+        if (emailS.isEmpty() || passwordS.isEmpty()) {
             Toast.makeText(mContext, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Create User object
-        User user = new User();
-        user.username = usernameS;
-        user.password = passwordS;
 
-        mApiService.login(user).enqueue(new Callback<Void>() {
+        mApiService.loginUser(emailS, passwordS).enqueue(new Callback<BaseResponse<User>>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<BaseResponse<User>> call, Response<BaseResponse<User>> response) {
                 // handle the potential 4xx & 5xx error
                 if (!response.isSuccessful()) {
                     Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // if success finish this activity (back to login activity)
-                Toast.makeText(mContext, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                moveActivity(mContext, HomePage.class);
+
+                BaseResponse<User> baseResponse = response.body();
+                if (baseResponse != null && baseResponse.success) {
+                    loggedAccount = baseResponse.payload;
+                    Toast.makeText(mContext, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                    email.setText("");
+                    password.setText("");
+                    moveActivity(mContext, HomePage.class);
+                } else {
+                    Toast.makeText(mContext, "Login Gagal: " + (baseResponse != null ? baseResponse.message : "Unknown error"), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<BaseResponse<User>> call, Throwable t) {
                 Toast.makeText(mContext, "Problem with the server", Toast.LENGTH_SHORT).show();
             }
         });
