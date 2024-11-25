@@ -18,10 +18,10 @@ import retrofit2.http.PUT;
 public interface BaseApiService {
 
     @POST("/register")
-    Call<Void> registerUser(@Body User user);
+    Call<Void> register(@Body User user);
 
     @POST("/login")
-    Call<Void> loginUser(@Body User user);
+    Call<Void> login(@Body User user);
 
     @PUT("/update")
     Call<Void> editProfile(@Body User user);
