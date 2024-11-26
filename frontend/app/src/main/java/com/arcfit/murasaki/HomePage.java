@@ -19,6 +19,7 @@ import com.arcfit.murasaki.LoginActivity;
 // ...other necessary imports...
 
 public class HomePage extends AppCompatActivity {
+    private BaseApiService mApiService;
     private ProgressBar progressStrength;
     private ProgressBar progressAgility;
     private ProgressBar progressVitality;
@@ -33,7 +34,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         mContext = this;
-
+        mApiService = UtilsApi.getApiService();
         // Initialize progress bars
         progressStrength = findViewById(R.id.progress_strength);
         progressAgility = findViewById(R.id.progress_agility);
@@ -46,14 +47,14 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void getStatsFromServer() {
-        Retrofit retrofit = RetrofitClient.getClient(UtilsApi.BASE_URL_API);
-        BaseApiService apiService = retrofit.create(BaseApiService.class);
+        //Retrofit retrofit = RetrofitClient.getClient(UtilsApi.BASE_URL_API);
+        //BaseApiService apiService = retrofit.create(BaseApiService.class);
 
         // Get user ID from LoginActivity
         int userId = Integer.parseInt(LoginActivity.loggedAccount.id);
 
-        Call<BaseResponse<Stats>> call = apiService.getStats(userId);
-        call.enqueue(new Callback<BaseResponse<Stats>>() {
+        //Call<BaseResponse<Stats>> call = apiService.getStats(userId);
+        mApiService.getStats(userId).enqueue(new Callback<BaseResponse<Stats>>() {
             @Override
             public void onResponse(Call<BaseResponse<Stats>> call, Response<BaseResponse<Stats>> response) {
                 if (response.isSuccessful() && response.body() != null) {
