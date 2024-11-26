@@ -3,6 +3,9 @@ package com.arcfit.murasaki;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+import android.content.Context;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,11 +25,14 @@ public class HomePage extends AppCompatActivity {
     private ProgressBar progressFlexibility;
     private ProgressBar progressStability;
     protected static Stats userStats;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        mContext = this;
 
         // Initialize progress bars
         progressStrength = findViewById(R.id.progress_strength);
@@ -40,7 +46,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void getStatsFromServer() {
-        Retrofit retrofit = RetrofitClient.getClient(UtilsApi.BASE_URL);
+        Retrofit retrofit = RetrofitClient.getClient(UtilsApi.BASE_URL_API);
         BaseApiService apiService = retrofit.create(BaseApiService.class);
 
         // Get user ID from LoginActivity
@@ -52,7 +58,7 @@ public class HomePage extends AppCompatActivity {
             public void onResponse(Call<BaseResponse<Stats>> call, Response<BaseResponse<Stats>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     userStats = response.body().getData();
-                    updateProgressBars(Userstats);
+                    updateProgressBars(userStats);
                 }
             }
 
