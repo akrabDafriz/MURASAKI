@@ -5,4 +5,7 @@ public class BaseResponse<T> {
     public String message;
     public T payload;
 
+    public T getData() {
+        return payload;
+    }
 }
