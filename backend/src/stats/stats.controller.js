@@ -19,6 +19,7 @@ const increaseStats = async(req, res) => {
 
 const getStats = async(req, res) => {
     try{
+        console.log(req.body);
         result = await statsService.getStats(req.body);
         res.status(200).json({
             success: true,
