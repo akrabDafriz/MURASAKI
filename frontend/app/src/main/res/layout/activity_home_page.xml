@@ -115,7 +115,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp">
-
                     <TextView
                         android:id="@+id/tv_strength"
                         android:layout_width="wrap_content"
@@ -125,7 +124,6 @@
                         android:fontFamily="@font/jaroregularvariablefontopsz"
                         android:textColor="#4F1787"
                         android:layout_alignParentStart="true" />
-
                     <ProgressBar
                         android:id="@+id/progress_strength"
                         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"

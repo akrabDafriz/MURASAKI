@@ -22,14 +22,14 @@ import retrofit2.http.PUT;
 public interface BaseApiService {
 
     @FormUrlEncoded
-    @POST("/register")
+    @POST("/user/register")
     Call<BaseResponse<String>> registerUser(
         @Field("username") String username,
         @Field("email") String email,
         @Field("password") String password
     );
     @FormUrlEncoded
-    @POST("/login")
+    @POST("/user/login")
     Call<BaseResponse<User>> loginUser(
         @Field("email") String email,
         @Field("password") String password
@@ -43,4 +43,7 @@ public interface BaseApiService {
 
     @GET("/")
     Call<Stats> getStats();
+
+    @GET("/stats/")
+    Call<BaseResponse<Stats>> getStats(@Field("user_id") int userId);
 }
