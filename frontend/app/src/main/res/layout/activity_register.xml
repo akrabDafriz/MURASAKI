@@ -19,11 +19,6 @@
     </ImageView>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/logo"
-        >
-        <TextView
             android:layout_marginTop="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,12 +38,11 @@
             android:orientation="vertical"
             android:padding="30dp"
             android:layout_below="@id/login_text">
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/button_shape"
-                android:hint="  |  Email"
+                android:hint="  |  Username"
                 android:textColor="@color/black"
                 android:fontFamily="@font/imprimaregular"
                 android:drawableLeft="@drawable/baseline_person_24"
@@ -85,13 +79,12 @@
         <Button
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:id="@+id/login_btn"
+            android:id="@+id/register_btn"
             android:layout_below="@+id/credentials"
             android:layout_centerHorizontal="true"
             android:text="REGISTER"
             android:fontFamily="@font/hanumanbold"
-            android:textSize="20dp"
-            >
+            android:textSize="20dp">
         </Button>
     </RelativeLayout>
 </RelativeLayout>

@@ -51,17 +51,20 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        mApiService.registerUser(usernameS, emailS, passwordS).enqueue(new Callback<BaseResponse<Integer>>() {
+        mApiService.registerUser(usernameS, emailS, passwordS).enqueue(new Callback<BaseResponse<String>>() {
             @Override
-            public void onResponse(Call<BaseResponse<Integer>> call, Response<BaseResponse<Integer>> response) {
+            public void onResponse(Call<BaseResponse<String>> call, Response<BaseResponse<String>> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                BaseResponse<Integer> baseResponse = response.body();
+                BaseResponse<String> baseResponse = response.body();
                 if (baseResponse != null && baseResponse.success) {
                     Toast.makeText(mContext, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    username.setText("");
+                    email.setText("");
+                    password.setText("");
                     moveActivity(mContext, LoginActivity.class);
                 } else {
                     Toast.makeText(mContext, "Registration Failed: " + (baseResponse != null ? baseResponse.message : "Unknown error"), Toast.LENGTH_SHORT).show();
@@ -69,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<BaseResponse<Integer>> call, Throwable t) {
+            public void onFailure(Call<BaseResponse<String>> call, Throwable t) {
                 Toast.makeText(mContext, "Problem with the server", Toast.LENGTH_SHORT).show();
             }
         });
@@ -79,4 +82,5 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
     }
+
 }
