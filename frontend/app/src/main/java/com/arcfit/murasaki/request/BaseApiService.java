@@ -45,5 +45,5 @@ public interface BaseApiService {
     Call<Stats> getStats();
 
     @GET("/stats/")
-    Call<BaseResponse<Stats>> getStats(@Field("user_id") int userId);
+    Call<BaseResponse<Stats>> getStats(@Query("user_id") String userId);
 }

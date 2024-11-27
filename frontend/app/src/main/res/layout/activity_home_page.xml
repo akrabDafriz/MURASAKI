@@ -22,7 +22,6 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <!-- FrameLayout untuk menumpuk lingkaran dan progress bar -->
             <FrameLayout
                 android:id="@+id/level_circle_container"
                 android:layout_width="350dp"
@@ -31,7 +30,6 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="30dp">
 
-                <!-- Progress Bar (di bawah lingkaran) -->
                 <ProgressBar
                     android:id="@+id/level_progress_bar"
                     android:layout_width="250dp"
@@ -44,20 +42,17 @@
                     android:progress="70"
                     android:max="100"/>
 
-                <!-- Lingkaran Level -->
                 <RelativeLayout
                     android:id="@+id/level_circle_layout"
                     android:layout_width="110dp"
                     android:layout_height="110dp">
 
-                    <!-- Lingkaran sebagai background -->
                     <View
                         android:id="@+id/ellipse_2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/ellipse_2" />
 
-                    <!-- TextView untuk angka Level -->
                     <TextView
                         android:id="@+id/tv_level"
                         android:layout_width="wrap_content"
@@ -71,7 +66,6 @@
                 </RelativeLayout>
             </FrameLayout>
 
-            <!-- Username di sebelah kanan lingkaran -->
             <TextView
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
@@ -93,7 +87,6 @@
             android:layout_marginTop="16dp"
             android:background="#D3D3D3" />
 
-        <!-- Card untuk Bar Status -->
         <LinearLayout
             android:id="@+id/status_card"
             android:layout_width="match_parent"
@@ -110,7 +103,6 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Bar Strength -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -135,7 +127,6 @@
                         android:max="100" />
                 </RelativeLayout>
 
-                <!-- Bar Agility -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,7 +153,6 @@
                         android:max="100" />
                 </RelativeLayout>
 
-                <!-- Bar Vitality -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,7 +179,6 @@
                         android:max="100" />
                 </RelativeLayout>
 
-                <!-- Bar Flexibility -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -216,7 +205,6 @@
                         android:max="100" />
                 </RelativeLayout>
 
-                <!-- Bar Stability -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -253,7 +241,6 @@
             android:gravity="center"
             android:background="@drawable/navbar_bg">
 
-            <!-- Button Input Progress -->
             <ImageButton
                 android:id="@+id/btn_input_progress"
                 android:layout_width="0dp"
@@ -262,7 +249,6 @@
                 android:background="@drawable/navbar_input_btn"
                 android:textColor="#FFFFFF"/>
 
-            <!-- Button Exercise List -->
             <ImageButton
                 android:id="@+id/btn_exercise_list"
                 android:layout_width="0dp"
@@ -271,7 +257,6 @@
                 android:background="@drawable/navbar_list_btn"
                 android:textColor="#FFFFFF"/>
 
-            <!-- Button Home (centered) -->
             <ImageButton
                 android:id="@+id/btn_home"
                 android:layout_width="15dp"
@@ -280,7 +265,6 @@
                 android:background="@drawable/navbar_home_btn"
                 android:textColor="#FFFFFF"/>
 
-            <!-- Button Stat Details -->
             <ImageButton
                 android:id="@+id/btn_stat_details"
                 android:layout_width="0dp"
@@ -289,7 +273,6 @@
                 android:background="@drawable/navbar_detail_btn"
                 android:textColor="#FFFFFF"/>
 
-            <!-- Button Settings -->
             <ImageButton
                 android:id="@+id/btn_settings"
                 android:layout_width="0dp"

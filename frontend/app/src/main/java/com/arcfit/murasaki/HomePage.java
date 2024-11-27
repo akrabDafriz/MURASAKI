@@ -51,7 +51,7 @@ public class HomePage extends AppCompatActivity {
         //BaseApiService apiService = retrofit.create(BaseApiService.class);
 
         // Get user ID from LoginActivity
-        int userId = Integer.parseInt(LoginActivity.loggedAccount.id);
+        String userId = LoginActivity.loggedAccount.id;
 
         //Call<BaseResponse<Stats>> call = apiService.getStats(userId);
         mApiService.getStats(userId).enqueue(new Callback<BaseResponse<Stats>>() {
