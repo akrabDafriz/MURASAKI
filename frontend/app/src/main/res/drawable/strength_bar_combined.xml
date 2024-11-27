@@ -1,13 +1,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Latar Belakang -->
-    <item>
-        <drawable android:drawable="@drawable/strength_bar_bg" />
-    </item>
+    <item
+        android:drawable="@drawable/strength_bar_bg"/>
 
     <!-- Progress -->
     <item android:id="@android:id/progress">
-        <clip>
-            <drawable android:drawable="@drawable/strength_bar_progress" />
-        </clip>
+        <clip
+            android:drawable="@drawable/strength_bar_progress" />
     </item>
 </layer-list>
