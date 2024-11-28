@@ -13,7 +13,7 @@
     android:orientation="vertical"
     >
     <LinearLayout
-        android:id="@+id/list1"
+        android:id="@+id/lists"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginTop="25dp"
@@ -35,14 +35,13 @@
             android:padding="10dp"/>
 
         <LinearLayout
-            android:id="@+id/list2"
+            android:id="@+id/list1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp">
 
-            <!-- Nama Olahraga -->
             <TextView
                 android:id="@+id/tvWorkoutName"
                 android:layout_width="wrap_content"
@@ -53,12 +52,10 @@
                 android:textStyle="bold"
                 android:textColor="#501105" />
 
-            <!-- Spacer untuk jarak antara nama olahraga dan jumlah set -->
             <Space
                 android:layout_width="8dp"
                 android:layout_height="wrap_content" />
 
-            <!-- Jumlah Set -->
             <TextView
                 android:id="@+id/tvWorkoutSets"
                 android:layout_width="wrap_content"
