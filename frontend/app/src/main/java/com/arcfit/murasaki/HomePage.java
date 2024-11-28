@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.content.Context;
+import android.os.Bundle;
+import android.widget.ImageView;
+import com.bumptech.glide.Glide;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +44,11 @@ public class HomePage extends AppCompatActivity {
         progressVitality = findViewById(R.id.progress_vitality);
         progressFlexibility = findViewById(R.id.progress_flexibility);
         progressStability = findViewById(R.id.progress_stability);
-
+        ImageView avatarImage = findViewById(R.id.avatar_image);
+        Glide.with(this)
+                .asGif()
+                .load(R.drawable.gandalf_warrior) // Nama file GIF di drawable
+                .into(avatarImage);
         // Fetch stats from backend
         getStatsFromServer();
     }
