@@ -7,7 +7,8 @@ const increaseStats = async(req, res) => {
         res.status(200).json({
             success: true,
             message: "Stats Increased Successfully",
-            payload: result
+            payload: null  
+            //tadinya return user_id, arm_strength, back_strength, foot_agility, leg_speed, heart_vitality, body_flexibility, core_stability
         });
     }catch(error){
         // console.log("body:");
@@ -32,7 +33,23 @@ const getStats = async(req, res) => {
     }
 }
 
+const getAspects = async(req, res) => {
+    try{
+        console.log(req.body);
+        result = await statsService.getAspects(req.body);
+        res.status(200).json({
+            success: true,
+            message: "Aspects retrieved successfully",
+            payload: result
+        });
+    }catch(error){
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
 module.exports = {
     increaseStats,
-    getStats
+    getStats,
+    getAspects
 };
