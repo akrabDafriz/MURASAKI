@@ -41,9 +41,14 @@ public interface BaseApiService {
     @POST("/increase")
     Call<Void> increaseStats(@Body Stats stats);
 
-    @GET("/")
-    Call<Stats> getStats();
-
     @GET("/stats/")
     Call<BaseResponse<Stats>> getStats(@Query("user_id") String userId);
+
+    @FormUrlEncoded
+    @POST("/stats/increase")
+    Call<BaseResponse<Void>> increaseStats(
+        @Query("user_id") String userId,
+        @Field("aspect_to_change") String aspectToChange,
+        @Field("sets_number") int setsNumber
+    );
 }
