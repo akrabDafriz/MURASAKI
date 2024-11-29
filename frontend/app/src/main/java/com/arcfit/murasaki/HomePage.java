@@ -8,6 +8,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import android.widget.ImageButton;
+import android.content.Intent;
+import android.widget.TextView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,8 +31,11 @@ public class HomePage extends AppCompatActivity {
     private ProgressBar progressVitality;
     private ProgressBar progressFlexibility;
     private ProgressBar progressStability;
+    private ImageButton btnInputProgress;
+    private ImageButton btnHome;
     protected static Stats userStats;
     private Context mContext;
+    private TextView tvUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,25 @@ public class HomePage extends AppCompatActivity {
                 .asGif()
                 .load(R.drawable.gandalf_warrior) // Nama file GIF di drawable
                 .into(avatarImage);
+        btnInputProgress = findViewById(R.id.btn_input_progress);
+        btnHome = findViewById(R.id.btn_home);
+        tvUserName = findViewById(R.id.tv_user_name);
+
+        // Set the username
+        if (LoginActivity.loggedAccount != null && LoginActivity.loggedAccount.username != null) {
+            tvUserName.setText(LoginActivity.loggedAccount.username);
+        } else {
+            tvUserName.setText("Guest");
+        }
+
+        btnInputProgress.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, ProgressInputActivity.class);
+            startActivity(intent);
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Toast.makeText(HomePage.this, "You are already on the Home Page", Toast.LENGTH_SHORT).show();
+        });
         // Fetch stats from backend
         getStatsFromServer();
     }

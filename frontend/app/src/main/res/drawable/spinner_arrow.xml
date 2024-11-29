@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <bitmap android:src="@drawable/arrow_drop_up" android:tint="#FB773C"/>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/arrow_drop_down" android:tint="#FB773C"/>
+    </item>
+</selector>
