@@ -108,7 +108,7 @@
     <!-- Dropdown Container -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="190dp"
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="25dp"
         android:background="@drawable/input_progress_dropdown_bg"
@@ -116,6 +116,37 @@
         android:padding="16dp">
 
         <!-- First Dropdown -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"
+                android:textColor="#4F1787"
+                android:shadowColor="#80000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:fontFamily="@font/jaroregularvariablefontopsz"/>
+
+            <Spinner
+                android:id="@+id/workoutCategorySpinner"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="34dp"
+                android:background="@drawable/dropdown_bg"
+                android:padding="8dp"
+                android:entries="@array/workout_types_array"
+                android:layout_alignParentEnd="true"/>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,9 +202,9 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                    android:background="@drawable/dropdown_bg"
+                android:background="@drawable/dropdown_bg"
                 android:padding="8dp"
-                android:layout_marginLeft="55dp"
+                android:layout_marginLeft="56dp"
                 android:layout_alignParentEnd="true"/>
         </LinearLayout>
     </LinearLayout>
