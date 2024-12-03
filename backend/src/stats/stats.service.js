@@ -1,46 +1,64 @@
 const pool = require('../../db');
 
-// async function increaseStrength(){
-
-// }
-
 async function increaseStats(req_body){
-    const { user_id, aspect_to_change, sets_number } = req_body;
+    const { user_id, workout_name, sets_number } = req_body;
 
-    let stats_up = 2*sets_number;
-
-    
-    const result = await pool.query(
-        `UPDATE aspects SET ${aspect_to_change} = ${aspect_to_change} + $1 WHERE user_id = $2`, [stats_up, user_id] 
+    const { rows: mappings } = await pool.query(
+        `SELECT aspect, increment 
+        FROM workout_aspect_mapping 
+        WHERE workout_name = $1`, 
+        [workout_name]
     );
 
-    if (aspect_to_change == 'arm_strength' || aspect_to_change == 'back_strength'){
-        await pool.query(
-            `UPDATE stats SET strength = strength + $1 WHERE user_id = $2`, [stats_up, user_id] 
-        );
+    if (mappings.length === 0) {
+        return {message: 'Invalid workout name or no mappings found.'};
     }
-    else if ( aspect_to_change == 'foot_agility' || aspect_to_change == 'leg_speed') {
+
+    // Calculate the actual increment based on sets completed
+    const incrementFactor = sets_number;
+
+    // Update each aspect based on the mappings
+    for (const { aspect, increment } of mappings) {
+        const adjustedIncrement = increment * incrementFactor;
+
+        // Update the aspect in the aspects table
         await pool.query(
-            `UPDATE stats SET agility = agility + $1 WHERE user_id = $2`, [stats_up, user_id] 
+            `UPDATE aspects 
+            SET ${aspect} = ${aspect} + $1 
+            WHERE user_id = $2`,
+            [adjustedIncrement, user_id]
         );
+
+        // Update the corresponding stats category (if applicable)
+        const statsCategory = getStatsCategory(aspect);
+        if (statsCategory) {
+            await pool.query(
+                `UPDATE stats 
+                SET ${statsCategory} = ${statsCategory} + $1 
+                WHERE user_id = $2`,
+                [adjustedIncrement, user_id]
+            );
+        }
     }
-    else if ( aspect_to_change == 'heart_vitality') {
-        await pool.query(
-            `UPDATE stats SET vitality = vitality + $1 WHERE user_id = $2`, [stats_up, user_id] 
-        );
-    }
-    else if ( aspect_to_change == 'body_flexibility') {
-        await pool.query(
-            `UPDATE stats SET flexibility = flexibility + $1 WHERE user_id = $2`, [stats_up, user_id] 
-        );
-    }
-    else if ( aspect_to_change == 'fcore_stability') {
-        await pool.query(
-            `UPDATE stats SET stability = stability + $1 WHERE user_id = $2`, [stats_up, user_id] 
-        );
-    }
-    
-    return result.rows[0];
+
+    return { message: 'Stats updated successfully.' };
+
+    // return result.rows[0];
+}
+
+function getStatsCategory(aspect) {
+    const mapping = {
+        arm_strength: 'strength',
+        back_strength: 'strength',
+        chest_strength: 'strength',
+        foot_agility: 'agility',
+        leg_speed: 'agility',
+        heart_vitality: 'vitality',
+        body_flexibility: 'flexibility',
+        core_stability: 'stability'
+    };
+
+    return mapping[aspect] || null;
 }
 
 async function getStats(req_body){
@@ -71,7 +89,7 @@ async function getAspects(req_body){
 
     if(result.rows.length == 0){
         await pool.query(
-            'INSERT INTO aspects(user_id, arm_strength, back_strength, foot_agility, leg_speed, heart_vitality, body_flexibility, core_stability) VALUES($1, 0, 0, 0, 0, 0, 0, 0)', [user_id]
+            'INSERT INTO aspects(user_id, arm_strength, back_strength, chest_strength, foot_agility, leg_speed, heart_vitality, body_flexibility, core_stability) VALUES($1, 0, 0, 0, 0, 0, 0, 0, 0)', [user_id]
         );
 
         result = await pool.query(
