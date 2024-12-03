@@ -2,7 +2,7 @@ const statsService = require('./stats.service.js');
 
 const increaseStats = async(req, res) => {
     try{
-        console.log(req.body); // body nya json: {}
+        console.log(req.body); // body nya json: {user_id (string), workout_name (string), sets_number(integer)}
         result = await statsService.increaseStats(req.body);
         res.status(200).json({
             success: true,
