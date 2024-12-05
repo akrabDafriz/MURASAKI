@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -38,6 +39,9 @@ public class ProgressInputActivity extends AppCompatActivity {
     private Spinner workoutCategorySpinner;
     private Spinner setsSpinner;
     private Button updateButton;
+    private ImageButton btnInputProgress;
+    private ImageButton btnHome;
+    private ImageButton btnStatDetail;
     private BaseApiService mApiService;
     private Context mContext;
 
@@ -51,6 +55,9 @@ public class ProgressInputActivity extends AppCompatActivity {
 
         mContext = this;
         mApiService = UtilsApi.getApiService();
+        btnInputProgress = findViewById(R.id.btn_input_progress);
+        btnHome = findViewById(R.id.btn_home);
+        btnStatDetail = findViewById(R.id.btn_stat_details);
 
         if (LoginActivity.loggedAccount == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
@@ -86,6 +93,20 @@ public class ProgressInputActivity extends AppCompatActivity {
 
         updateButton.setOnClickListener(v -> {
             handleUpdate();
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(ProgressInputActivity.this, HomePage.class);
+            startActivity(intent);
+        });
+
+        btnStatDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(ProgressInputActivity.this, AspectActivity.class);
+            startActivity(intent);
+        });
+
+        btnInputProgress.setOnClickListener(v -> {
+            Toast.makeText(ProgressInputActivity.this, "You are already on the Progress Input Page", Toast.LENGTH_SHORT).show();
         });
     }
 

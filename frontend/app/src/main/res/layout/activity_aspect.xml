@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aspect"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_bg"
+    tools:context=".AspectActivity">
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <FrameLayout
+                android:id="@+id/level_circle_container"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp">
+
+                <ProgressBar
+                    android:id="@+id/level_progress_bar"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:background="@drawable/level_bar_combined"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:progress="70"
+                    android:max="100"/>
+
+                <RelativeLayout
+                    android:id="@+id/level_circle_layout"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp">
+
+                    <View
+                        android:id="@+id/ellipse_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ellipse_2" />
+
+                    <TextView
+                        android:id="@+id/tv_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textSize="65dp"
+                        android:textColor="@color/orange"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:gravity="center"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="35dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/jaroregularvariablefontopsz"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="145dp"
+                android:layout_marginTop="140dp"
+                android:gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:adjustViewBounds="true"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/status_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/card_border"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:id="@+id/tv_arm_strength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arm Strength"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+                    <ProgressBar
+                        android:id="@+id/progress_arm_strength"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/arm_strength_bar_combined"
+                        android:max="100" />
+                    <TextView
+                        android:id="@+id/arm_strength_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#F05356"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_chest_strength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chest Strength"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_chest_strength"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/chest_strength_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/chest_strength_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#F05356"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_back_strength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Back Strength"
+                        android:textSize="18sp"
+
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_back_strength"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/back_strength_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/back_strength_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#F05356"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_foot_agility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Foot Agility"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_foot_agility"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/foot_agility_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/foot_agility_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#53F0D1"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_leg_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Leg Speed"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_leg_speed"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/leg_speed_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/leg_speed_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#53F0D1"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_heart_vitality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Heart Vitality"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_heart_vitality"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/heart_vitality_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/heart_vitality_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#53F058"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_body_flexibility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Body Flexibility"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_body_flexibility"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/body_flexibility_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/body_flexibility_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#F0F053"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_core_stability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Core Stability"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:textColor="#4F1787"
+                        android:layout_alignParentStart="true" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_core_stability"
+                        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                        android:layout_width="200dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="35dp"
+                        android:progressDrawable="@drawable/core_stability_bar_combined"
+                        android:max="100" />
+
+                    <TextView
+                        android:id="@+id/core_stability_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50"
+                        android:textSize="18sp"
+                        android:textColor="#F053EE"
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/navbar"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:padding="8dp"
+                android:gravity="center"
+                android:background="@drawable/navbar_bg">
+
+                <ImageButton
+                    android:id="@+id/btn_input_progress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_input_btn"
+                    android:scaleType="centerInside" />
+
+                <ImageButton
+                    android:id="@+id/btn_exercise_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_list_btn"
+                    android:scaleType="centerInside" />
+
+                <ImageButton
+                    android:id="@+id/btn_home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_home_btn"
+                    android:scaleType="centerInside" />
+
+                <ImageButton
+                    android:id="@+id/btn_stat_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_detail_btn"
+                    android:scaleType="centerInside" />
+
+                <ImageButton
+                    android:id="@+id/btn_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_settings_btn"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
