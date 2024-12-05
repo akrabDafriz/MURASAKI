@@ -33,6 +33,7 @@ public class HomePage extends AppCompatActivity {
     private ProgressBar progressStability;
     private ImageButton btnInputProgress;
     private ImageButton btnHome;
+    private ImageButton btnStatDetail;
     protected static Stats userStats;
     private Context mContext;
     private TextView tvUserName;
@@ -69,6 +70,7 @@ public class HomePage extends AppCompatActivity {
         // Initialize buttons
         btnInputProgress = findViewById(R.id.btn_input_progress);
         btnHome = findViewById(R.id.btn_home);
+        btnStatDetail = findViewById(R.id.btn_stat_details);
         tvUserName = findViewById(R.id.tv_user_name);
 
         // Set the username
@@ -81,6 +83,11 @@ public class HomePage extends AppCompatActivity {
         // Button actions
         btnInputProgress.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, ProgressInputActivity.class);
+            startActivity(intent);
+        });
+
+        btnStatDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, AspectActivity.class);
             startActivity(intent);
         });
 

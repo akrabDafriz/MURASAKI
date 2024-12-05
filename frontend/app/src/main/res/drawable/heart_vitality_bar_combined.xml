@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Latar Belakang -->
+    <item
+        android:drawable="@drawable/heart_vitality_bar_bg"/>
+
+    <!-- Progress -->
+    <item android:id="@android:id/progress">
+        <clip
+            android:drawable="@drawable/heart_vitality_bar_progress" />
+    </item>
+</layer-list>

@@ -1,4 +1,5 @@
 package com.arcfit.murasaki.request;
+import com.arcfit.murasaki.model.Aspects;
 import com.arcfit.murasaki.model.BaseResponse;
 import com.arcfit.murasaki.model.Stats;
 import com.arcfit.murasaki.model.User;
@@ -50,6 +51,10 @@ public interface BaseApiService {
     @FormUrlEncoded
     @POST("/stats/")
     Call<BaseResponse<Stats>> getStats(@Field("user_id") String userId);
+
+    @FormUrlEncoded
+    @POST("/stats/aspects")
+    Call<BaseResponse<Aspects>> getAspects(@Field("user_id") String userId);
 
 //    @FormUrlEncoded
 //    @POST("/stats/increase")
