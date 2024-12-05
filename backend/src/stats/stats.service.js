@@ -1,17 +1,17 @@
 const pool = require('../../db');
 
-async function increaseStats(req_body){
+async function increaseStats(req_body) {
     const { user_id, workout_name, sets_number } = req_body;
 
     const { rows: mappings } = await pool.query(
         `SELECT aspect, increment 
         FROM workout_aspect_mapping 
-        WHERE workout_name = $1`, 
+        WHERE workout_name = $1`,
         [workout_name]
     );
 
     if (mappings.length === 0) {
-        return {message: 'Invalid workout name or no mappings found.'};
+        return 'Invalid workout name or no mappings found.';
     }
 
     // Calculate the actual increment based on sets completed
@@ -41,7 +41,7 @@ async function increaseStats(req_body){
         }
     }
 
-    return { message: 'Stats updated successfully.' };
+    return 'Stats updated successfully.';
 
     // return result.rows[0];
 }
@@ -61,14 +61,14 @@ function getStatsCategory(aspect) {
     return mapping[aspect] || null;
 }
 
-async function getStats(req_body){
-    const {user_id} = req_body;
+async function getStats(req_body) {
+    const { user_id } = req_body;
 
     let result = await pool.query(
         'SELECT * FROM stats WHERE user_id = $1', [user_id]
     );
 
-    if(result.rows.length == 0){
+    if (result.rows.length == 0) {
         await pool.query(
             'INSERT INTO stats(user_id, strength, agility, vitality, flexibility, stability) VALUES($1, 0, 0, 0, 0, 0)', [user_id]
         );
@@ -80,14 +80,14 @@ async function getStats(req_body){
     return result.rows[0];
 }
 
-async function getAspects(req_body){
-    const {user_id} = req_body;
+async function getAspects(req_body) {
+    const { user_id } = req_body;
 
     let result = await pool.query(
         'SELECT * FROM aspects WHERE user_id = $1', [user_id]
     );
 
-    if(result.rows.length == 0){
+    if (result.rows.length == 0) {
         await pool.query(
             'INSERT INTO aspects(user_id, arm_strength, back_strength, chest_strength, foot_agility, leg_speed, heart_vitality, body_flexibility, core_stability) VALUES($1, 0, 0, 0, 0, 0, 0, 0, 0)', [user_id]
         );

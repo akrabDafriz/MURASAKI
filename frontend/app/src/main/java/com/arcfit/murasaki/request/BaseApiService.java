@@ -11,6 +11,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import retrofit2.Call;
@@ -38,17 +39,23 @@ public interface BaseApiService {
     @PUT("/update")
     Call<User> editProfile(@Query("userId") int userId, @Body User user);
 
-    @POST("/increase")
-    Call<Void> increaseStats(@Body Stats stats);
-
-    @GET("/stats/")
-    Call<BaseResponse<Stats>> getStats(@Query("user_id") String userId);
-
     @FormUrlEncoded
     @POST("/stats/increase")
     Call<BaseResponse<Void>> increaseStats(
-        @Query("user_id") String userId,
-        @Field("aspect_to_change") String aspectToChange,
-        @Field("sets_number") int setsNumber
+            @Field("user_id") String userId,
+            @Field("workout_name") String workoutName,
+            @Field("sets_number") Integer setsNumber
     );
+
+    @FormUrlEncoded
+    @POST("/stats/")
+    Call<BaseResponse<Stats>> getStats(@Field("user_id") String userId);
+
+//    @FormUrlEncoded
+//    @POST("/stats/increase")
+//    Call<BaseResponse<Void>> increaseStats(
+//        @Query("user_id") String userId,
+//        @Field("aspect_to_change") String aspectToChange,
+//        @Field("sets_number") int setsNumber
+//    );
 }
