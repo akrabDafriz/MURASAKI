@@ -44,6 +44,7 @@ const getAspects = async (req, res) => {
             message: "Aspects retrieved successfully",
             payload: result
         });
+        console.log(result);
     } catch (error) {
         console.log(error);
         res.status(500).json(error);

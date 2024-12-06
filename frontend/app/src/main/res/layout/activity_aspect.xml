@@ -122,17 +122,17 @@
                         android:layout_marginRight="35dp"
                         android:progressDrawable="@drawable/arm_strength_bar_combined"
                         android:max="100" />
+
                     <TextView
                         android:id="@+id/arm_strength_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="50"
-                        android:textSize="18sp"
-                        android:textColor="#F05356"
-                        android:fontFamily="@font/jaroregularvariablefontopsz"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
-                        android:layout_centerVertical="true" />
+                        android:fontFamily="@font/jaroregularvariablefontopsz"
+                        android:text="50"
+                        android:textColor="#F05356"
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
 
