@@ -1,7 +1,7 @@
 package com.arcfit.murasaki.model;
 
 public class Aspects {
-    public String userId;
+    public String user_id;
     public int arm_strength;
     public int chest_strength;
     public int back_strength;

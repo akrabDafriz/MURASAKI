@@ -134,15 +134,16 @@ public class AspectActivity extends AppCompatActivity {
         progressBodyFlexibility.setProgress(aspects.body_flexibility);
         progressCoreStability .setProgress(aspects.core_stability);
 
-        TextView armStrengthValue = findViewById(R.id.strength_value);
-        TextView chestStrengthValue = findViewById(R.id.agility_value);
-        TextView backStrengthValue = findViewById(R.id.vitality_value);
-        TextView footAgilityValue = findViewById(R.id.flexibility_value);
-        TextView legSpeedValue = findViewById(R.id.stability_value);
-        TextView heartVitalityValue = findViewById(R.id.stability_value);
-        TextView bodyFlexibilityValue = findViewById(R.id.stability_value);
-        TextView coreStabilityValue = findViewById(R.id.stability_value);
+        TextView armStrengthValue = findViewById(R.id.arm_strength_value);
+        TextView chestStrengthValue = findViewById(R.id.chest_strength_value);
+        TextView backStrengthValue = findViewById(R.id.back_strength_value);
+        TextView footAgilityValue = findViewById(R.id.foot_agility_value);
+        TextView legSpeedValue = findViewById(R.id.leg_speed_value);
+        TextView heartVitalityValue = findViewById(R.id.heart_vitality_value);
+        TextView bodyFlexibilityValue = findViewById(R.id.body_flexibility_value);
+        TextView coreStabilityValue = findViewById(R.id.core_stability_value);
 
+        //strengthValue.setText(String.valueOf(stats.strength))
         armStrengthValue.setText(String.valueOf(aspects.arm_strength));
         chestStrengthValue.setText(String.valueOf(aspects.chest_strength));
         backStrengthValue.setText(String.valueOf(aspects.back_strength));

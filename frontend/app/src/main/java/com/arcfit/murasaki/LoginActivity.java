@@ -17,6 +17,7 @@ import com.arcfit.murasaki.model.BaseResponse;
 import com.arcfit.murasaki.model.User;
 import com.arcfit.murasaki.request.BaseApiService;
 import com.arcfit.murasaki.request.UtilsApi;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    protected void handleLogin () {
+    protected void handleLogin() {
         // handling empty field
         String emailS = email.getText().toString();
         String passwordS = password.getText().toString();
@@ -76,21 +77,21 @@ public class LoginActivity extends AppCompatActivity {
         mApiService.loginUser(emailS, passwordS).enqueue(new Callback<BaseResponse<User>>() {
             @Override
             public void onResponse(Call<BaseResponse<User>> call, Response<BaseResponse<User>> response) {
-                // handle the potential 4xx & 5xx error
-                if (!response.isSuccessful()) {
-                    Toast.makeText(mContext, "Application error " + response.code(), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                BaseResponse<User> baseResponse = response.body();
-                if (baseResponse != null && baseResponse.success) {
-                    loggedAccount = baseResponse.payload;
-                    Toast.makeText(mContext, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                    email.setText("");
-                    password.setText("");
-                    moveActivity(mContext, HomePage.class);
+                if (response.isSuccessful()) {
+                    BaseResponse<User> baseResponse = response.body();
+                    if (baseResponse != null && baseResponse.success) {
+                        loggedAccount = baseResponse.payload;
+                        Toast.makeText(mContext, "Login Successful", Toast.LENGTH_SHORT).show();
+                        email.setText("");
+                        password.setText("");
+                        moveActivity(mContext, HomePage.class);
+                    } else {
+                        Toast.makeText(mContext, "Login Failed: " + (baseResponse != null ? baseResponse.message : "Unknown error"), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(mContext, "Login Gagal: " + (baseResponse != null ? baseResponse.message : "Unknown error"), Toast.LENGTH_SHORT).show();
+                    // Handle non-2xx responses by parsing the error body
+                    String errorMessage = parseErrorResponse(response);
+                    Toast.makeText(mContext, "Login Failed: " + errorMessage, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -100,6 +101,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private String parseErrorResponse(Response<?> response) {
+        try {
+            // Assuming your backend sends JSON error response
+            Gson gson = new Gson();
+            BaseResponse<?> errorResponse = gson.fromJson(response.errorBody().string(), BaseResponse.class);
+            return errorResponse != null ? errorResponse.message : "Unknown error";
+        } catch (Exception e) {
+            return "Failed to parse error response";
+        }
+    }
+
 
     private void moveActivity(Context ctx, Class<?> cls) {
         Intent intent = new Intent(ctx, cls);
