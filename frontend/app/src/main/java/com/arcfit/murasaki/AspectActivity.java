@@ -49,25 +49,10 @@ public class AspectActivity extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getApiService();
 
-        progressArmStrentgh = findViewById(R.id.progress_arm_strength);
-        progressChestStrentgh = findViewById(R.id.progress_chest_strength);
-        progressBackStrentgh = findViewById(R.id.progress_back_strength);
-        progressFootAgility = findViewById(R.id.progress_foot_agility);
-        progressLegSpeed = findViewById(R.id.progress_leg_speed);
-        progressHeartVitality = findViewById(R.id.progress_heart_vitality);
-        progressBodyFlexibility = findViewById(R.id.progress_body_flexibility);
-        progressCoreStability = findViewById(R.id.progress_core_stability);
 
         btnInputProgress = findViewById(R.id.btn_input_progress);
         btnHome = findViewById(R.id.btn_home);
         btnStatDetail = findViewById(R.id.btn_stat_details);
-        tvUserName = findViewById(R.id.tv_user_name);
-
-        if (LoginActivity.loggedAccount != null && LoginActivity.loggedAccount.username != null) {
-            tvUserName.setText(LoginActivity.loggedAccount.username);
-        } else {
-            tvUserName.setText("Guest");
-        }
 
         btnInputProgress.setOnClickListener(v -> {
             Intent intent = new Intent(AspectActivity.this, ProgressInputActivity.class);
