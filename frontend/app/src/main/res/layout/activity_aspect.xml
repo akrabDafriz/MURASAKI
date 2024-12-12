@@ -28,10 +28,9 @@
         <RelativeLayout
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="336dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="56dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_chest_strength"
+            app:layout_constraintEnd_toEndOf="@+id/line_chest_strength">
 
             <TextView
                 android:id="@+id/tv_chest_strength"
@@ -60,19 +59,20 @@
             android:id="@+id/line_chest_strength"
             android:layout_width="100dp"
             android:layout_height="5dp"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginEnd="136dp"
             android:background="#F05356"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+
+            app:layout_constraintEnd_toEndOf="@+id/avatar_knight"
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.295" />
 
         <RelativeLayout
             android:layout_width="123dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="432dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_arm_strength"
+            app:layout_constraintEnd_toEndOf="@+id/line_arm_strength">
 
             <TextView
                 android:id="@+id/tv_arm_strength"
@@ -102,18 +102,22 @@
             android:layout_width="80dp"
             android:layout_height="5dp"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="456dp"
+            android:layout_marginTop="100dp"
             android:background="#F05356"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+            app:layout_constraintEnd_toEndOf="@+id/avatar_knight"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.362" />
 
         <RelativeLayout
             android:layout_width="127dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="268dp"
-            android:layout_marginTop="240dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_back_strength"
+            app:layout_constraintStart_toStartOf="@+id/line_back_strength">
 
             <TextView
                 android:id="@+id/tv_back_strength"
@@ -143,19 +147,21 @@
             android:layout_width="100dp"
             android:layout_height="5dp"
             android:layout_marginStart="220dp"
-            android:layout_marginTop="300dp"
             android:background="#F05356"
             android:rotation="-45"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.127" />
 
         <RelativeLayout
             android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
             android:layout_marginTop="584dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toTopOf="@+id/line_foot_agility"
+            app:layout_constraintStart_toStartOf="@+id/line_foot_agility"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="5dp">
 
             <TextView
                 android:id="@+id/tv_foot_agility"
@@ -184,19 +190,20 @@
             android:id="@+id/line_foot_agility"
             android:layout_width="100dp"
             android:layout_height="5dp"
-            android:layout_marginStart="252dp"
-            android:layout_marginTop="612dp"
+            android:layout_marginStart="176dp"
             android:background="#53F0D1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+            app:layout_constraintStart_toStartOf="@+id/avatar_knight"
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.962" />
 
         <RelativeLayout
             android:layout_width="104dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="532dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_leg_speed"
+            app:layout_constraintEnd_toEndOf="@+id/line_leg_speed">
 
             <TextView
                 android:id="@+id/tv_leg_speed"
@@ -226,18 +233,21 @@
             android:layout_width="100dp"
             android:layout_height="5dp"
             android:layout_marginStart="84dp"
-            android:layout_marginTop="560dp"
             android:background="#53F0D1"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+            app:layout_constraintEnd_toEndOf="@+id/avatar_knight"
+            app:layout_constraintHorizontal_bias="0.012"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.797" />
 
         <RelativeLayout
             android:layout_width="127dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="288dp"
-            android:layout_marginTop="356dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="340dp"
+            app:layout_constraintBottom_toTopOf="@+id/line_heart_vitality"
+            app:layout_constraintStart_toStartOf="@+id/line_heart_vitality">
 
             <TextView
                 android:id="@+id/tv_heart_vitality"
@@ -266,19 +276,21 @@
             android:id="@+id/line_heart_vitality"
             android:layout_width="100dp"
             android:layout_height="5dp"
-            android:layout_marginStart="228dp"
-            android:layout_marginTop="380dp"
+            android:layout_marginStart="152dp"
             android:background="#53F058"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+            app:layout_constraintStart_toStartOf="@+id/avatar_knight"
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.329" />
 
         <RelativeLayout
             android:layout_width="127dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="396dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="8dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/line_body_flexibility"
+            app:layout_constraintEnd_toEndOf="@+id/line_body_flexibility">
 
             <TextView
                 android:id="@+id/tv_body_flexibility"
@@ -307,19 +319,21 @@
             android:id="@+id/line_body_flexibility"
             android:layout_width="100dp"
             android:layout_height="5dp"
-            android:layout_marginStart="76dp"
-            android:layout_marginTop="416dp"
+            android:layout_marginEnd="164dp"
+            android:layout_marginBottom="208dp"
             android:background="#F0F053"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+            app:layout_constraintEnd_toEndOf="@+id/avatar_knight" />
 
         <RelativeLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="296dp"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="408dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toTopOf="@+id/line_core_stability"
+            app:layout_constraintStart_toStartOf="@+id/line_core_stability"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/tv_core_stability"
@@ -348,66 +362,68 @@
             android:id="@+id/line_core_stability"
             android:layout_width="120dp"
             android:layout_height="5dp"
-            android:layout_marginStart="212dp"
-            android:layout_marginTop="428dp"
+            android:layout_marginStart="132dp"
             android:background="#F053EE"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_knight"
+            app:layout_constraintStart_toStartOf="@+id/avatar_knight"
+            app:layout_constraintTop_toTopOf="@+id/avatar_knight"
+            app:layout_constraintVertical_bias="0.473" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+                <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/navbar"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            android:padding="8dp"
-            android:gravity="center"
-            android:background="@drawable/navbar_bg">
+            android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/btn_input_progress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/navbar_input_btn"
-                android:scaleType="centerInside" />
+            <LinearLayout
+                android:id="@+id/navbar"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/navbar_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-            <ImageButton
-                android:id="@+id/btn_exercise_list"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/navbar_list_btn"
-                android:scaleType="centerInside" />
+                <ImageButton
+                    android:id="@+id/btn_input_progress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_input_btn"
+                    android:scaleType="centerInside" />
 
-            <ImageButton
-                android:id="@+id/btn_home"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/navbar_home_btn"
-                android:scaleType="centerInside" />
+                <ImageButton
+                    android:id="@+id/btn_exercise_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_list_btn"
+                    android:scaleType="centerInside" />
 
-            <ImageButton
-                android:id="@+id/btn_stat_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/navbar_detail_btn"
-                android:scaleType="centerInside" />
+                <ImageButton
+                    android:id="@+id/btn_home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_home_btn"
+                    android:scaleType="centerInside" />
 
-            <ImageButton
-                android:id="@+id/btn_settings"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/navbar_settings_btn"
-                android:scaleType="centerInside" />
-        </LinearLayout>
-    </RelativeLayout>
+                <ImageButton
+                    android:id="@+id/btn_stat_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_detail_btn"
+                    android:scaleType="centerInside" />
+
+                <ImageButton
+                    android:id="@+id/btn_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/navbar_settings_btn"
+                    android:scaleType="centerInside" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

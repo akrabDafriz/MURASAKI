@@ -1,6 +1,6 @@
 const pool = require('../../db');
 
-async function addPlan(req_body){
+async function addPlan(req_body) {
     const { user_id, exercise, deadline } = req_body; //deadline : YYYY-MM-DD (numbers only)
 
     const result = await pool.query(
@@ -10,14 +10,14 @@ async function addPlan(req_body){
     return result.rows[0];
 }
 
-async function getPlans(req_body){
+async function getPlans(req_body) {
     const { user_id } = req_body;
 
     let result = await pool.query(
         `SELECT * FROM plans WHERE user_id = $1`, [user_id]
     )
-    
-    if(result.rows.length == 0){
+
+    if (result.rows.length == 0) {
         return -1;
     }
 

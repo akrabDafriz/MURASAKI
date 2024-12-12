@@ -110,14 +110,14 @@ public class AspectActivity extends AppCompatActivity {
             return;
         }
 
-        progressArmStrentgh.setProgress(aspects.arm_strength);
-        progressChestStrentgh.setProgress(aspects.chest_strength);
-        progressBackStrentgh.setProgress(aspects.back_strength);
-        progressFootAgility.setProgress(aspects.foot_agility);
-        progressLegSpeed.setProgress(aspects.leg_speed);
-        progressHeartVitality.setProgress(aspects.heart_vitality);
-        progressBodyFlexibility.setProgress(aspects.body_flexibility);
-        progressCoreStability .setProgress(aspects.core_stability);
+//        progressArmStrentgh.setProgress(aspects.arm_strength);
+//        progressChestStrentgh.setProgress(aspects.chest_strength);
+//        progressBackStrentgh.setProgress(aspects.back_strength);
+//        progressFootAgility.setProgress(aspects.foot_agility);
+//        progressLegSpeed.setProgress(aspects.leg_speed);
+//        progressHeartVitality.setProgress(aspects.heart_vitality);
+//        progressBodyFlexibility.setProgress(aspects.body_flexibility);
+//        progressCoreStability .setProgress(aspects.core_stability);
 
         TextView armStrengthValue = findViewById(R.id.arm_strength_value);
         TextView chestStrengthValue = findViewById(R.id.chest_strength_value);
