@@ -2,6 +2,7 @@ package com.arcfit.murasaki;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.content.Context;
@@ -34,6 +35,7 @@ public class HomePage extends AppCompatActivity {
     private ImageButton btnInputProgress;
     private ImageButton btnHome;
     private ImageButton btnStatDetail;
+    private ImageButton btnPlan;
     protected static Stats userStats;
     private Context mContext;
     private TextView tvUserName;
@@ -71,6 +73,7 @@ public class HomePage extends AppCompatActivity {
         btnInputProgress = findViewById(R.id.btn_input_progress);
         btnHome = findViewById(R.id.btn_home);
         btnStatDetail = findViewById(R.id.btn_stat_details);
+        btnPlan = findViewById(R.id.btn_exercise_list);
         tvUserName = findViewById(R.id.tv_user_name);
 
         // Set the username
@@ -88,6 +91,11 @@ public class HomePage extends AppCompatActivity {
 
         btnStatDetail.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, AspectActivity.class);
+            startActivity(intent);
+        });
+
+        btnPlan.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, PlanActivity.class);
             startActivity(intent);
         });
 

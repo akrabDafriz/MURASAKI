@@ -70,6 +70,7 @@
 
 
             <Button
+                android:id="@+id/addExercise_btn"
                 android:layout_width="210dp"
                 android:layout_height="70dp"
                 android:gravity="center"
