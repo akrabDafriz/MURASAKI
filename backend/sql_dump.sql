@@ -140,3 +140,11 @@ INSERT INTO workout_aspect_mapping (workout_name, aspect, increment) VALUES
 ('Dynamic Stretching', 'body_flexibility', 3),
 ('Dynamic Stretching', 'core_stability', 2),
 ('Static Stretching', 'body_flexibility', 3);
+
+
+CREATE TABLE user_levels (
+    user_id UUID PRIMARY KEY REFERENCES account(id),
+    level INT DEFAULT 1,
+    current_exp INT DEFAULT 0,
+    max_exp INT DEFAULT 300
+);

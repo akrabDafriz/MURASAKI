@@ -16,10 +16,13 @@ async function increaseStats(req_body) {
 
     // Calculate the actual increment based on sets completed
     const incrementFactor = sets_number;
+    let totalExpIncrement = 0; //exp implement
 
     // Update each aspect based on the mappings
     for (const { aspect, increment } of mappings) {
         const adjustedIncrement = increment * incrementFactor;
+        totalExpIncrement += adjustedIncrement; //exp implement
+        console.log("Exp increment: +="+totalExpIncrement);
 
         // Update the aspect in the aspects table
         await pool.query(
@@ -40,6 +43,14 @@ async function increaseStats(req_body) {
             );
         }
     }
+
+    await pool.query(
+        `UPDATE user_levels
+        SET current_exp = current_exp + $1
+        WHERE user_id = $2`,
+        [totalExpIncrement, user_id]
+    );
+    console.log(totalExpIncrement);
 
     return 'Stats updated successfully.';
 

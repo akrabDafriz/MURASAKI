@@ -59,9 +59,25 @@ const editProfile = async (req, res) => {
     }
 }
 
+const getLevel = async (req, res) => {
+    try{
+        console.log(req.body);
+        result = await userService.getLevel(req.body);
+        res.status(200).json({
+            success: true,
+            message: "Level fetched",
+            payload: result //result = {user_id, level, current_exp, max_exp}
+        });
+    }catch(error){
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
 module.exports = {
     registerUser,
     loginUser,
-    editProfile
+    editProfile,
+    getLevel
 };
 
