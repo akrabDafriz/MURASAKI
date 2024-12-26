@@ -65,6 +65,10 @@ public interface BaseApiService {
             @Field("deadline") String deadline
     );
 
+    @FormUrlEncoded
+    @GET("/plans")
+    Call<BaseResponse<List<Plans>>> getPlans(@Query("user_id") String userId);
+
 
 //    @FormUrlEncoded
 //    @POST("/stats/increase")

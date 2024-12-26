@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+>
         <ImageView
             android:id="@+id/avatar_knight"
             android:layout_width="260dp"
@@ -369,61 +370,62 @@
             app:layout_constraintTop_toTopOf="@+id/avatar_knight"
             app:layout_constraintVertical_bias="0.473" />
 
-                <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/navbar"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/navbar_bg"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <ImageButton
-                    android:id="@+id/btn_input_progress"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/navbar_input_btn"
-                    android:scaleType="centerInside" />
-
-                <ImageButton
-                    android:id="@+id/btn_exercise_list"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/navbar_list_btn"
-                    android:scaleType="centerInside" />
-
-                <ImageButton
-                    android:id="@+id/btn_home"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/navbar_home_btn"
-                    android:scaleType="centerInside" />
-
-                <ImageButton
-                    android:id="@+id/btn_stat_details"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/navbar_detail_btn"
-                    android:scaleType="centerInside" />
-
-                <ImageButton
-                    android:id="@+id/btn_settings"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/navbar_settings_btn"
-                    android:scaleType="centerInside" />
-            </LinearLayout>
-        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/navbar_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/btn_input_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_input_btn"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/btn_exercise_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_list_btn"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/btn_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_home_btn"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/btn_stat_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_detail_btn"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/btn_settings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/navbar_settings_btn"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
