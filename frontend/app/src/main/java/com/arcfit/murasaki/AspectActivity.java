@@ -40,6 +40,7 @@ public class AspectActivity extends AppCompatActivity {
     private ImageButton btnInputProgress;
     private ImageButton btnHome;
     private ImageButton btnStatDetail;
+    private ImageButton btnPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class AspectActivity extends AppCompatActivity {
         btnInputProgress = findViewById(R.id.btn_input_progress);
         btnHome = findViewById(R.id.btn_home);
         btnStatDetail = findViewById(R.id.btn_stat_details);
+        btnPlan = findViewById(R.id.btn_exercise_list);
 
         btnInputProgress.setOnClickListener(v -> {
             Intent intent = new Intent(AspectActivity.this, ProgressInputActivity.class);
@@ -61,6 +63,11 @@ public class AspectActivity extends AppCompatActivity {
 
         btnHome.setOnClickListener(v -> {
             Intent intent = new Intent(AspectActivity.this, HomePage.class);
+            startActivity(intent);
+        });
+
+        btnPlan.setOnClickListener(v -> {
+            Intent intent = new Intent(AspectActivity.this, PlanActivity.class);
             startActivity(intent);
         });
 

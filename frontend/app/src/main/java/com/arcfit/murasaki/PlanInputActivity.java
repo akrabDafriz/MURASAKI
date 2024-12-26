@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -33,16 +34,19 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class PlanInputActivity extends AppCompatActivity {
     private Spinner workoutTypeSpinner;
     private Spinner workoutCategorySpinner;
     private Spinner setsSpinner;
     private Button updateButton;
+    private Button btnPlanInput;
     private ImageButton btnInputProgress;
     private ImageButton btnHome;
     private ImageButton btnStatDetail;
-
+    private ImageButton btnPlan;
+    private TextView quotes_text;
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     private BaseApiService mApiService;
@@ -63,6 +67,7 @@ public class PlanInputActivity extends AppCompatActivity {
         btnInputProgress = findViewById(R.id.btn_input_progress);
         btnHome = findViewById(R.id.btn_home);
         btnStatDetail = findViewById(R.id.btn_stat_details);
+        btnPlan = findViewById(R.id.btn_exercise_list);
 
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
@@ -74,6 +79,21 @@ public class PlanInputActivity extends AppCompatActivity {
             finish();
             return;
         }
+
+        String[] motivationalQuotes = {
+                "Believe you can and you're halfway there.",
+                "Every journey begins with a single step.",
+                "Push harder than yesterday if you want a different tomorrow.",
+                "The pain you feel today will be the strength you feel tomorrow.",
+                "Success usually comes to those who are too busy to be looking for it.",
+                "Wake up with determination. Go to bed with satisfaction.",
+                "Don’t count the days, make the days count."
+        };
+
+        String randomQuote = motivationalQuotes[new Random().nextInt(motivationalQuotes.length)];
+
+        TextView quoteTextView = findViewById(R.id.quotes_text);
+        quoteTextView.setText(randomQuote);
 
         bindUIComponents();
 
@@ -102,6 +122,27 @@ public class PlanInputActivity extends AppCompatActivity {
         updateButton.setOnClickListener(v -> {
             handleInput();
         });
+
+        btnPlan.setOnClickListener(v -> {
+            Intent intent = new Intent(PlanInputActivity.this, PlanActivity.class);
+            startActivity(intent);
+        });
+
+        btnInputProgress.setOnClickListener(v -> {
+            Intent intent = new Intent(PlanInputActivity.this, ProgressInputActivity.class);
+            startActivity(intent);
+        });
+
+        btnStatDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(PlanInputActivity.this, AspectActivity.class);
+            startActivity(intent);
+        });
+
+        btnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(PlanInputActivity.this, HomePage.class);
+            startActivity(intent);
+        });
+
     }
 
     private String getTodaysDate() {

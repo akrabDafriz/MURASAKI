@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -33,6 +34,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class ProgressInputActivity extends AppCompatActivity {
     private Spinner workoutTypeSpinner;
@@ -42,6 +44,8 @@ public class ProgressInputActivity extends AppCompatActivity {
     private ImageButton btnInputProgress;
     private ImageButton btnHome;
     private ImageButton btnStatDetail;
+    private ImageButton btnPlan;
+    private TextView quotes_text;
     private BaseApiService mApiService;
     private Context mContext;
 
@@ -58,6 +62,22 @@ public class ProgressInputActivity extends AppCompatActivity {
         btnInputProgress = findViewById(R.id.btn_input_progress);
         btnHome = findViewById(R.id.btn_home);
         btnStatDetail = findViewById(R.id.btn_stat_details);
+        btnPlan = findViewById(R.id.btn_exercise_list);
+
+        String[] motivationalQuotes = {
+                "Believe you can and you're halfway there.",
+                "Every journey begins with a single step.",
+                "Push harder than yesterday if you want a different tomorrow.",
+                "The pain you feel today will be the strength you feel tomorrow.",
+                "Success usually comes to those who are too busy to be looking for it.",
+                "Wake up with determination. Go to bed with satisfaction.",
+                "Don’t count the days, make the days count."
+        };
+
+        String randomQuote = motivationalQuotes[new Random().nextInt(motivationalQuotes.length)];
+
+        TextView quoteTextView = findViewById(R.id.quotes_text);
+        quoteTextView.setText(randomQuote);
 
         if (LoginActivity.loggedAccount == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
@@ -105,9 +125,16 @@ public class ProgressInputActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        btnPlan.setOnClickListener(v -> {
+            Intent intent = new Intent(ProgressInputActivity.this, PlanActivity.class);
+            startActivity(intent);
+        });
+
         btnInputProgress.setOnClickListener(v -> {
             Toast.makeText(ProgressInputActivity.this, "You are already on the Progress Input Page", Toast.LENGTH_SHORT).show();
         });
+
+
     }
 
     private void setupCategorySpinner() {
