@@ -5,17 +5,17 @@ public class Plans {
     public String exerciseType;
     public String deadline;
 
-    public Plans(String userId, String exerciseType, String deadline) {
-        this.userId = userId;
-        this.exerciseType = exerciseType;
-        this.deadline = deadline;
-    }
-
-    public String getDeadline() {
-        return deadline;
-    }
-
-    public String getExercise() {
-        return exerciseType;
-    }
+//    public Plans(String userId, String exerciseType, String deadline) {
+//        this.userId = userId;
+//        this.exerciseType = exerciseType;
+//        this.deadline = deadline;
+//    }
+//
+//    public String getDeadline() {
+//        return deadline;
+//    }
+//
+//    public String getExercise() {
+//        return exerciseType;
+//    }
 }
