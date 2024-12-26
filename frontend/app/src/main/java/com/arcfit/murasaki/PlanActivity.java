@@ -3,6 +3,7 @@ package com.arcfit.murasaki;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class PlanActivity extends AppCompatActivity {
     private ImageButton btnPlan;
     private RecyclerView planList;
     private TextView deadlineText;
+    private RecyclerView planRecyclerView;
     private PlanAdapter planAdapter;
     private BaseApiService mApiService;
     private Context mContext;
@@ -54,14 +56,14 @@ public class PlanActivity extends AppCompatActivity {
         btnHome = findViewById(R.id.btn_home);
         btnStatDetail = findViewById(R.id.btn_stat_details);
 
-        planList = findViewById(R.id.plan_list);
+        planRecyclerView = findViewById(R.id.plan_list);
         deadlineText = findViewById(R.id.deadline);
 
-        planList.setLayoutManager(new LinearLayoutManager(this));
-        PlanAdapter planAdapter = new PlanAdapter(new ArrayList<>());
-        planList.setAdapter(planAdapter);
+        planRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        planAdapter = new PlanAdapter();
+        planRecyclerView.setAdapter(planAdapter);
 
-        fetchPlansFromServer(planAdapter, deadlineText);
+        getPlansFromServer();
 
         if (LoginActivity.loggedAccount == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
@@ -96,31 +98,38 @@ public class PlanActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchPlansFromServer(PlanAdapter planAdapter, TextView deadlineText) {
+    private void getPlansFromServer() {
         String userId = LoginActivity.loggedAccount.id;
+
+        if (userId == null || userId.isEmpty()) {
+            Toast.makeText(mContext, "User ID is null or empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Log.d("DEBUG", "Fetching plans for user ID: " + userId);
 
         mApiService.getPlans(userId).enqueue(new Callback<BaseResponse<List<Plans>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Plans>>> call, Response<BaseResponse<List<Plans>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    Log.d("DEBUG", "Response received: " + response.body());
                     List<Plans> plans = response.body().getData();
-                    if (!plans.isEmpty()) {
-                        // Update RecyclerView
-                        planAdapter.updatePlans(plans);
-
-                        // Set the first deadline (or use other logic if needed)
+                    if (plans != null && !plans.isEmpty()) {
                         deadlineText.setText("Deadline: " + plans.get(0).deadline);
+                        planAdapter.updatePlans(plans);
                     } else {
-                        deadlineText.setText("No plans available");
+                        Toast.makeText(mContext, "No plans available", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(PlanActivity.this, "Failed to fetch plans", Toast.LENGTH_SHORT).show();
+                    Log.e("DEBUG", "Failed response: " + response.code() + ", " + response.message());
+                    Toast.makeText(mContext, "Failed to fetch plans", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<List<Plans>>> call, Throwable t) {
-                Toast.makeText(PlanActivity.this, "Server error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("DEBUG", "Error: " + t.getMessage());
+                Toast.makeText(mContext, "Server error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

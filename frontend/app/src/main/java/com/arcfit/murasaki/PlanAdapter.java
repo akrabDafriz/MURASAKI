@@ -14,39 +14,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder> {
-    private List<Plans> plans;
-
-    public PlanAdapter(List<Plans> plans) {
-        this.plans = plans;
-    }
+    private List<Plans> planList = new ArrayList<>();
 
     @NonNull
     @Override
     public PlanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.exercise_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.exercise_list, parent, false);
         return new PlanViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PlanViewHolder holder, int position) {
-        Plans plan = plans.get(position);
+        Plans plan = planList.get(position);
         holder.planName.setText(plan.exerciseType);
+        holder.planDeadline.setText(plan.deadline);
     }
 
     @Override
     public int getItemCount() {
-        return plans.size();
+        return planList.size();
     }
 
-    public void updatePlans(List<Plans> newPlans) {
-        this.plans = newPlans;
+    public void updatePlans(List<Plans> plans) {
+        this.planList = plans;
         notifyDataSetChanged();
     }
 
-    public static class PlanViewHolder extends RecyclerView.ViewHolder {
+    static class PlanViewHolder extends RecyclerView.ViewHolder {
         TextView planName;
+        TextView planDeadline;
 
-        public PlanViewHolder(@NonNull View itemView) {
+        PlanViewHolder(@NonNull View itemView) {
             super(itemView);
             planName = itemView.findViewById(R.id.plan_name);
         }
