@@ -17,10 +17,11 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tvWorkoutSets"
+        android:id="@+id/plan_deadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(3 sets)"
+        android:layout_marginStart="16dp" 
+        android:text="Deadline"
         android:textColor="#501105"
         android:fontFamily="@font/jejuhallasanregular"
         android:textStyle="bold"

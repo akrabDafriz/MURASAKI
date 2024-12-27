@@ -370,10 +370,10 @@ public class PlanInputActivity extends AppCompatActivity {
         System.out.println("Deadline: " + deadline);
 
         // Panggil API untuk menyimpan plan
-        mApiService.getPlans(userId, selectedWorkout, deadline)
-                .enqueue(new Callback<BaseResponse<Plans>>() {
+        mApiService.addPlans(userId, selectedWorkout, deadline)
+                .enqueue(new Callback<BaseResponse<Void>>() {
                     @Override
-                    public void onResponse(Call<BaseResponse<Plans>> call, Response<BaseResponse<Plans>> response) {
+                    public void onResponse(Call<BaseResponse<Void>> call, Response<BaseResponse<Void>> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             Toast.makeText(mContext, "Plan added successfully!", Toast.LENGTH_SHORT).show();
                         } else {
@@ -382,7 +382,7 @@ public class PlanInputActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<BaseResponse<Plans>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponse<Void>> call, Throwable t) {
                         Toast.makeText(mContext, "Server issue: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                         System.out.println(t.getMessage());
                     }

@@ -4,6 +4,7 @@ import com.arcfit.murasaki.model.BaseResponse;
 import com.arcfit.murasaki.model.Plans;
 import com.arcfit.murasaki.model.Stats;
 import com.arcfit.murasaki.model.User;
+import com.arcfit.murasaki.model.UserLevels;
 
 import java.util.List;
 
@@ -37,6 +38,9 @@ public interface BaseApiService {
         @Field("email") String email,
         @Field("password") String password
     );
+    @FormUrlEncoded
+    @POST("/user/level")
+    Call<BaseResponse<UserLevels>> getLevel(@Field("user_id") String userId);
 
     @PUT("/update")
     Call<User> editProfile(@Query("userId") int userId, @Body User user);
@@ -59,15 +63,15 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("/plans/add")
-    Call<BaseResponse<Plans>> getPlans(
+    Call<BaseResponse<Void>> addPlans(
             @Field("user_id") String userId,
-            @Field("exercise") String exerciseType,
+            @Field("exercise") String exercise_name,
             @Field("deadline") String deadline
     );
 
     @FormUrlEncoded
-    @GET("/plans")
-    Call<BaseResponse<List<Plans>>> getPlans(@Query("user_id") String userId);
+    @POST("/plans")
+    Call<BaseResponse<List<Plans>>> getPlans(@Field("user_id") String userId);
 
 
 //    @FormUrlEncoded
