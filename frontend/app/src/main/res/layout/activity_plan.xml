@@ -42,18 +42,6 @@
                 android:textColor="#501105"
                 android:fontFamily="@font/jejuhallasanregular">
             </TextView>
-            <TextView
-                android:id="@+id/deadline"
-                android:layout_width="170dp"
-                android:layout_height="40dp"
-                android:text="Deadline: DD/MM/YYYY"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:background="@drawable/deadline_bg"
-                android:fontFamily="@font/jaroregularvariablefontopsz"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="200dp"
-                android:padding="10dp"/>
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="5dp"
@@ -66,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:orientation="vertical"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="15dp">
             </androidx.recyclerview.widget.RecyclerView>
 

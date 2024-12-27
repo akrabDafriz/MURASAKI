@@ -57,7 +57,6 @@ public class PlanActivity extends AppCompatActivity {
         btnStatDetail = findViewById(R.id.btn_stat_details);
 
         planRecyclerView = findViewById(R.id.plan_list);
-        deadlineText = findViewById(R.id.deadline);
 
         planRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         planAdapter = new PlanAdapter();
@@ -115,7 +114,6 @@ public class PlanActivity extends AppCompatActivity {
                     Log.d("DEBUG", "Response received: " + response.body());
                     List<Plans> plans = response.body().getData();
                     if (plans != null && !plans.isEmpty()) {
-                        deadlineText.setText("Deadline: " + plans.get(0).deadline);
                         planAdapter.updatePlans(plans);
                     } else {
                         Toast.makeText(mContext, "No plans available", Toast.LENGTH_SHORT).show();

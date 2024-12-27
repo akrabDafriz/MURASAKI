@@ -8,6 +8,8 @@ import android.widget.Toast;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.arcfit.murasaki.model.UserLevels;
 import com.bumptech.glide.Glide;
 import android.widget.ImageButton;
 import android.content.Intent;
@@ -27,6 +29,7 @@ import com.arcfit.murasaki.LoginActivity;
 
 public class HomePage extends AppCompatActivity {
     private BaseApiService mApiService;
+    private ProgressBar levelProgressBar;
     private ProgressBar progressStrength;
     private ProgressBar progressAgility;
     private ProgressBar progressVitality;
@@ -39,6 +42,7 @@ public class HomePage extends AppCompatActivity {
     protected static Stats userStats;
     private Context mContext;
     private TextView tvUserName;
+    private TextView tvLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class HomePage extends AppCompatActivity {
         mApiService = UtilsApi.getApiService();
 
         // Initialize progress bars
+        levelProgressBar = findViewById(R.id.level_progress_bar);
         progressStrength = findViewById(R.id.progress_strength);
         progressAgility = findViewById(R.id.progress_agility);
         progressVitality = findViewById(R.id.progress_vitality);
@@ -61,6 +66,7 @@ public class HomePage extends AppCompatActivity {
         TextView vitalityValue = findViewById(R.id.vitality_value);
         TextView flexibilityValue = findViewById(R.id.flexibility_value);
         TextView stabilityValue = findViewById(R.id.stability_value);
+        
 
         // Initialize avatar
         ImageView avatarImage = findViewById(R.id.avatar_image);
@@ -75,6 +81,7 @@ public class HomePage extends AppCompatActivity {
         btnStatDetail = findViewById(R.id.btn_stat_details);
         btnPlan = findViewById(R.id.btn_exercise_list);
         tvUserName = findViewById(R.id.tv_user_name);
+        tvLevel = findViewById(R.id.tv_level);
 
         // Set the username
         if (LoginActivity.loggedAccount != null && LoginActivity.loggedAccount.username != null) {
@@ -105,7 +112,7 @@ public class HomePage extends AppCompatActivity {
 
         // Fetch stats from backend
         getStatsFromServer();
-
+        getLevelFromServer();
 
     }
 
@@ -127,6 +134,28 @@ public class HomePage extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<BaseResponse<Stats>> call, Throwable t) {
+                Toast.makeText(mContext, "Problem with the server connection.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void getLevelFromServer() {
+        String userId = LoginActivity.loggedAccount.id;
+
+        mApiService.getLevel(userId).enqueue(new Callback<BaseResponse<UserLevels>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<UserLevels>> call, Response<BaseResponse<UserLevels>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UserLevels userLevels = response.body().getData();  // Get user levels object
+                    updateLevel(userLevels);  // Update level and progress bar
+                    Toast.makeText(mContext, "Successfully fetching level from server.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "Failed to fetch level from server.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<UserLevels>> call, Throwable t) {
                 Toast.makeText(mContext, "Problem with the server connection.", Toast.LENGTH_SHORT).show();
             }
         });
@@ -169,6 +198,20 @@ public class HomePage extends AppCompatActivity {
         vitalityValue.setText(String.valueOf(stats.vitality));
         flexibilityValue.setText(String.valueOf(stats.flexibility));
         stabilityValue.setText(String.valueOf(stats.stability));
+    }
+
+    private void updateLevel(UserLevels userLevels) {
+        if (userLevels == null) {
+            Toast.makeText(mContext, "Error: User levels data is null.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Update level text
+        tvLevel.setText(String.valueOf(userLevels.level));
+
+        // Update level progress bar
+        levelProgressBar.setMax(userLevels.max_exp);
+        levelProgressBar.setProgress(userLevels.current_exp);
     }
 
 

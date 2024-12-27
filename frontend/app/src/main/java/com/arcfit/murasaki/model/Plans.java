@@ -2,7 +2,7 @@ package com.arcfit.murasaki.model;
 
 public class Plans {
     public String userId;
-    public String exerciseType;
+    public String exercise_name;
     public String deadline;
 
 //    public Plans(String userId, String exerciseType, String deadline) {
