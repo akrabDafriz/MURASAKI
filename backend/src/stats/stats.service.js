@@ -14,17 +14,13 @@ async function increaseStats(req_body) {
         return 'Invalid workout name or no mappings found.';
     }
 
-    // Calculate the actual increment based on sets completed
     const incrementFactor = sets_number;
-    let totalExpIncrement = 0; //exp implement
+    let totalExpIncrement = 0;
 
-    // Update each aspect based on the mappings
     for (const { aspect, increment } of mappings) {
         const adjustedIncrement = increment * incrementFactor;
-        totalExpIncrement += adjustedIncrement; //exp implement
-        console.log("Exp increment: +="+totalExpIncrement);
+        totalExpIncrement += adjustedIncrement;
 
-        // Update the aspect in the aspects table
         await pool.query(
             `UPDATE aspects 
             SET ${aspect} = ${aspect} + $1 
@@ -32,7 +28,6 @@ async function increaseStats(req_body) {
             [adjustedIncrement, user_id]
         );
 
-        // Update the corresponding stats category (if applicable)
         const statsCategory = getStatsCategory(aspect);
         if (statsCategory) {
             await pool.query(
@@ -50,11 +45,35 @@ async function increaseStats(req_body) {
         WHERE user_id = $2`,
         [totalExpIncrement, user_id]
     );
-    console.log(totalExpIncrement);
+
+    const { rows: plans } = await pool.query(
+        `SELECT * FROM plans WHERE user_id = $1 AND exercise_name = $2`,
+        [user_id, workout_name]
+    );
+
+    if (plans.length !== 0) {
+        const { deadline } = plans[0];
+        removePlans(user_id, workout_name, deadline);
+    }
 
     return 'Stats updated successfully.';
+}
 
-    // return result.rows[0];
+async function removePlans(user_id, workout_name, deadline) {
+    const currentDate = new Date();
+
+    // Check if the deadline has passed or the plan is fulfilled
+    const isDeadlineOverdue = new Date(deadline) <= currentDate;
+
+    if (isDeadlineOverdue) {
+        await pool.query(
+            `DELETE FROM plans WHERE user_id = $1 AND exercise_name = $2`,
+            [user_id, workout_name]
+        );
+        console.log(`Plan for workout '${workout_name}' removed for user '${user_id}'.`);
+    } else {
+        console.log(`Plan for workout '${workout_name}' is still active.`);
+    }
 }
 
 function getStatsCategory(aspect) {
